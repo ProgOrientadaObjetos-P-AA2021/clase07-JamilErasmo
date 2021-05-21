@@ -5,16 +5,16 @@
  */
 package paquete4;
 
-/**
- *
- * @author jamil
- */
+import paquete3.*;
+import paquete1.Calificacion;
+import paquete1.Hospital;
+import paquete1.Profesor;
+
 public class Ejecutor {
-    String nombreArchivo = "Hospital.txt";
-        
-        public static void main(String[] args) {
-        
-        String fileName = "hospital.txt";
+
+    public static void main(String[] args) {
+
+       String fileName = "hospital.txt";
         
         Hospital hospital1 = new Hospital("Caritas", 10, 300.55);
         Hospital hospital2 = new Hospital("Clínica Abendaño", 50, 1900.66);
@@ -22,7 +22,7 @@ public class Ejecutor {
 
         Hospital[] listaHospitales = {hospital1, hospital2, hospital3};
 
-        Escritura archivo = new Escritura(fileName);
+        EscrituraArchivoSecuencial archivo = new EscrituraArchivoSecuencial(fileName);
 
         for (int i = 0; i < listaHospitales.length; i++) {      
             archivo.establecerRegistro(listaHospitales[i]);       
@@ -30,9 +30,10 @@ public class Ejecutor {
         }
         archivo.cerrarArchivo();
         
-        Lectura lectura = new Lectura(fileName);
-        lectura.establecerLista();
+    
+
+        LecturaArchivoSecuencial lectura = new LecturaArchivoSecuencial(fileName);
+        lectura.establecerListaHospitales();
         System.out.println(lectura);
-        lectura.cerrarArchivo();
     }
 }
